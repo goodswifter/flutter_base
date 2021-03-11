@@ -1,0 +1,6 @@
+flutter报错解决:
+
+1. Xcode build failed due to concurrent builds, will retry in 2 seconds.
+- Run flutter create bug.
+- Update the files as follows: ...
+- ...

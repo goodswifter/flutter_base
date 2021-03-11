@@ -1,0 +1,22 @@
+StatefulWidget的生命周期:
+
+重启:
+flutter: StatelessWidget - contructor
+flutter: StatelessWidget - build
+flutter: 1. StatefulWidget - constructor
+flutter: 2. StatefulWidget - createState
+flutter: 3. State - constructor
+flutter: 4. State - initState
+flutter: state - didChangeDependencies
+flutter: 5. State - build
+
+热重载:
+flutter: StatelessWidget - contructor(除开MyApp的构造方法不走) 
+flutter: StatelessWidget - build
+flutter: 1. StatefulWidget - constructor
+flutter: State - didUpdateWidget
+flutter: 5. State - build
+
+setState(): 
+flutter: 5. State - build
+

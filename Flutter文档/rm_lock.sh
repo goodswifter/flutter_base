@@ -1,0 +1,1 @@
+sh /opt/shell/rm_lockfile.sh

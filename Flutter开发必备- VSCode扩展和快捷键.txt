@@ -1,0 +1,36 @@
+flutter开发必备: VSCode扩展和快捷键
+
+扩展:
+Flutter 
+Dart
+Awesome Flutter Snippets: 快速创建各种组件
+Bracket Pair Colorizer 2: 带括号的颜色
+Material Icon Theme: 
+Pubspec Assist: 自动添加依赖
+bloc: 
+Dart Data Class Generator: 自动生成构造, setter, getter方法, 在设置配置属性
+flutter code select: 按 alt+a 可在方括号之间快速选择代码
+
+
+快捷键:
+Format: Alt+ Shift + F
+Quick Fix: Cmd + .
+Command Palette(命令面板): cmd + shift + P
+Quick Open: cmd + P
+Move line(s): alt + Up/Down
+add Selection(添加选择): cmd + D
+Rename: F2
+Go to Definition: Cmd + click
+Remove Imports: Alt+ Shift + O
+Toggle Comment: Cmd + /
+重构: alt + Enter
+查看实现: cmd + alt + B
+删除整一行: cmd + shift + k
+
+
+
+
+
+
+
+
