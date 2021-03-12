@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'router/router.dart';
 
-import 'about.dart';
-import 'detail.dart';
+import 'router/router.dart';
 
 main() => runApp(MyApp());
 
@@ -12,7 +10,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "路由跳转",
       theme: ThemeData(
-          primarySwatch: Colors.blue, splashColor: Colors.transparent),
+        primarySwatch: Colors.blue,
+        splashColor: Colors.transparent,
+      ),
       routes: ADRouter.routes,
       initialRoute: ADRouter.initialRoute,
       onGenerateRoute: ADRouter.generateRoute,
@@ -20,4 +20,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

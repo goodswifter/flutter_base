@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/f11-router-manager/router/router.dart';
 
 main() => runApp(MyApp());
 
@@ -6,80 +7,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("手势Gesture"),
-        ),
-        body: Center(
-          child: GestureDemo02(),
-        ),
+      title: "router路由跳转",
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        splashColor: Colors.transparent,
       ),
-    );
-  }
-}
-
-class GestureDemo02 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        GestureDetector(
-          onTapDown: (details) {
-            print("outer click");
-          },
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.yellow,
-            alignment: Alignment.center,
-          ),
-        ),
-        IgnorePointer(
-          child: GestureDetector(
-            onTapDown: (details) {
-              print("inner click");
-            },
-            child: Container(
-              width: 100,
-              height: 100,
-              color: Colors.red,
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class GestureDemo01 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (details) {
-        print("outer click");
-      },
-      child: Container(
-        width: 200,
-        height: 200,
-        color: Colors.yellow,
-        alignment: Alignment.center,
-        child: GestureDetector(
-          onTapDown: (details) {
-            print("inner click");
-          },
-          child: Container(
-            width: 100,
-            height: 100,
-            color: Colors.red,
-          ),
-        ),
-      ),
-    );
-
-    Stack(
-      alignment: Alignment.center,
-      children: <Widget>[IgnorePointer()],
+      routes: ADRouter.routes,
+      initialRoute: ADRouter.initialRoute,
+      onUnknownRoute: ADRouter.unknownRoute,
+      onGenerateRoute: ADRouter.generateRoute,
     );
   }
 }

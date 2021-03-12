@@ -88,5 +88,3 @@ class _ADTextState extends State<ADText> {
     return Text(_message, style: TextStyle(fontSize: 20),);
   }
 }
-
-

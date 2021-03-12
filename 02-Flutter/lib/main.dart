@@ -43,7 +43,10 @@ class ADHomePage extends StatelessWidget {
           height: ADSizeFit.setPx(200),
           color: Colors.red,
           alignment: Alignment.center,
-          child: Text("Hello World", style: TextStyle(fontSize: 40 * ADSizeFit.rpx),),
+          child: Text(
+            "Hello World",
+            style: TextStyle(fontSize: 40 * ADSizeFit.rpx),
+          ),
         ),
       ),
     );
