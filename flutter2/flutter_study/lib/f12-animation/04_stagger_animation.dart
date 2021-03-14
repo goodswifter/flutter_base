@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 main() => runApp(MyApp());
@@ -23,7 +25,10 @@ class _ADHomeContentState extends State<ADHomeContent>
   // 2. 创建曲线动画对象
   Animation _curvedAnim;
   // 3. 创建值范围的动画对象
-  Animation _tweenAnim;
+  Animation _sizeAnim;
+  Animation _colorAnim;
+  Animation _opacityAnim;
+  Animation _radiansAnim;
 
   @override
   void initState() {
@@ -34,10 +39,20 @@ class _ADHomeContentState extends State<ADHomeContent>
         AnimationController(vsync: this, duration: Duration(seconds: 2));
 
     // 设置曲线动画对象
-    _curvedAnim = CurvedAnimation(parent: _controller, curve: Curves.linear);
+    _curvedAnim =
+        CurvedAnimation(parent: _controller, curve: Curves.easeInQuad);
 
     // 设置值范围的动画对象
-    _tweenAnim = Tween(begin: 50.0, end: 150.0).animate(_curvedAnim);
+    // 3.Tween
+    // 3.1.创建size的tween
+    _sizeAnim = Tween(begin: 50.0, end: 200.0).animate(_curvedAnim);
+    // 3.2.创建color的tween
+    _colorAnim = ColorTween(begin: Colors.orange, end: Colors.purple)
+        .animate(_curvedAnim);
+    // 3.3.创建opacity的tween
+    _opacityAnim = Tween(begin: 0.0, end: 1.0).animate(_curvedAnim);
+    // 3.4.创建radians的tween
+    _radiansAnim = Tween(begin: 0.0, end: 2 * pi).animate(_curvedAnim);
 
     // 监听动画状态的变化
     _controller.addStatusListener((status) {
@@ -51,9 +66,10 @@ class _ADHomeContentState extends State<ADHomeContent>
 
   @override
   Widget build(BuildContext context) {
+    print("执行_HYHomePageState的build方法");
     return Scaffold(
       appBar: AppBar(
-        title: Text("动画-AnimatedWidget"),
+        title: Text("交织动画"),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.play_arrow),
@@ -70,7 +86,29 @@ class _ADHomeContentState extends State<ADHomeContent>
         },
       ),
       body: Center(
-        child: ADAnimationIcon(_tweenAnim),
+        /**
+         * 1. 大小变化动画
+         * 2. 颜色变化动画
+         * 3. 透明度变化动画
+         * 4. 形变: 旋转
+         */
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (ctx, child) {
+            return Opacity(
+              opacity: _opacityAnim.value,
+              child: Transform(
+                transform: Matrix4.rotationZ(_radiansAnim.value),
+                alignment: Alignment.center,
+                child: Container(
+                  width: _sizeAnim.value,
+                  height: _sizeAnim.value,
+                  color: _colorAnim.value,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -80,20 +118,5 @@ class _ADHomeContentState extends State<ADHomeContent>
     // 4. 释放控制动画对象
     _controller.dispose();
     super.dispose();
-  }
-}
-
-class ADAnimationIcon extends AnimatedWidget {
-//  final Animation _tweenAnim;
-  ADAnimationIcon(Animation tweenAnim) : super(listenable: tweenAnim);
-
-  @override
-  Widget build(BuildContext context) {
-    Animation anim = listenable;
-    return Icon(
-      Icons.favorite,
-      color: Colors.red,
-      size: anim.value,
-    );
   }
 }

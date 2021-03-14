@@ -51,6 +51,7 @@ class _ADHomeContentState extends State<ADHomeContent>
 
   @override
   Widget build(BuildContext context) {
+    print("_ADHomeContentState - build");
     return Scaffold(
       appBar: AppBar(
         title: Text("动画-AnimatedWidget"),
@@ -70,6 +71,7 @@ class _ADHomeContentState extends State<ADHomeContent>
         },
       ),
       body: Center(
+        // 使用AnimatedWidget不会调用build方法, 只会重构AnimatedWidget内的build方法
         child: ADAnimationIcon(_tweenAnim),
       ),
     );
@@ -89,6 +91,7 @@ class ADAnimationIcon extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("ADAnimationIcon - build");
     Animation anim = listenable;
     return Icon(
       Icons.favorite,

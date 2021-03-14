@@ -7,19 +7,19 @@ class GrowTransition extends StatelessWidget {
   final Animation<double> animation;
 
   Widget build(BuildContext context) {
+    print("ADGrowTransition - build");
     return Center(
       child: AnimatedBuilder(
           animation: animation,
           builder: (BuildContext context, Widget child) {
             return Container(
-                color: Colors.orange,
-                height: animation.value,
-                width: animation.value,
-                child: child
+              color: Colors.orange,
+              height: animation.value,
+              width: animation.value,
+              child: child,
             );
           },
-          child: child
-      ),
+          child: child),
     );
   }
 }

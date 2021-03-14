@@ -17,7 +17,8 @@ class ADHomeContent extends StatefulWidget {
   _ADHomeContentState createState() => _ADHomeContentState();
 }
 
-class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProviderStateMixin {
+class _ADHomeContentState extends State<ADHomeContent>
+    with SingleTickerProviderStateMixin {
   // 1. 创建动画控制器
   AnimationController _controller;
   // 2. 创建曲线动画对象
@@ -30,10 +31,8 @@ class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProvider
     super.initState();
 
     // 设置动画控制器
-    _controller = AnimationController(
-        vsync: this,
-        duration: Duration(seconds: 2)
-    );
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
 
     // 设置曲线动画对象
     _curvedAnim = CurvedAnimation(parent: _controller, curve: Curves.linear);
@@ -53,7 +52,7 @@ class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    print("执行_HYHomePageState的build方法");
+    print("执行_ADHomeContentState的build方法");
     return Scaffold(
       appBar: AppBar(
         title: Text("AnimatedBuilder"),
@@ -74,10 +73,21 @@ class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProvider
       ),
       body: Center(
         child: GrowTransition(
-          child: Icon(Icons.favorite, color: Colors.red, size: 50,),
+          child: Icon(
+            Icons.favorite,
+            color: Colors.red,
+            size: 50,
+          ),
           animation: _tweenAnim,
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // 4. 释放控制动画对象
+    _controller.dispose();
+    super.dispose();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/f12-animation/widgets/ad_grow_Transition.dart';
 
 main() => runApp(MyApp());
 
@@ -51,9 +52,10 @@ class _ADHomeContentState extends State<ADHomeContent>
 
   @override
   Widget build(BuildContext context) {
+    print("_ADHomeContentState - build");
     return Scaffold(
       appBar: AppBar(
-        title: Text("动画-AnimatedWidget"),
+        title: Text("AnimatedBuilder"),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.play_arrow),
@@ -70,7 +72,9 @@ class _ADHomeContentState extends State<ADHomeContent>
         },
       ),
       body: Center(
-        child: ADAnimationIcon(_tweenAnim),
+        child: ADGrowTransition(
+          animation: _tweenAnim,
+        ),
       ),
     );
   }
@@ -80,20 +84,5 @@ class _ADHomeContentState extends State<ADHomeContent>
     // 4. 释放控制动画对象
     _controller.dispose();
     super.dispose();
-  }
-}
-
-class ADAnimationIcon extends AnimatedWidget {
-//  final Animation _tweenAnim;
-  ADAnimationIcon(Animation tweenAnim) : super(listenable: tweenAnim);
-
-  @override
-  Widget build(BuildContext context) {
-    Animation anim = listenable;
-    return Icon(
-      Icons.favorite,
-      color: Colors.red,
-      size: anim.value,
-    );
   }
 }

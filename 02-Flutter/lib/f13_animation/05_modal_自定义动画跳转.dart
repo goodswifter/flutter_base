@@ -25,7 +25,7 @@ class ADHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             RaisedButton(
               child: Text("Modal 跳转"),
               onPressed: () {
@@ -34,8 +34,7 @@ class ADHomePage extends StatelessWidget {
                     builder: (ctx) {
                       return ADModalPage();
                     },
-                    fullscreenDialog: true
-                ));
+                    fullscreenDialog: true));
               },
             ),
             RaisedButton(
@@ -45,12 +44,11 @@ class ADHomePage extends StatelessWidget {
                 Navigator.of(context).push(PageRouteBuilder(
 //                  transitionDuration: Duration(seconds: 3),
                     pageBuilder: (ctx, anim1, anim2) {
-                      return FadeTransition(
-                        opacity: anim1,
-                        child: ADModalPage(),
-                      );
-                    }
-                ));
+                  return FadeTransition(
+                    opacity: anim1,
+                    child: ADModalPage(),
+                  );
+                }));
               },
             )
           ],

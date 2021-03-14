@@ -18,7 +18,8 @@ class ADHomeContent extends StatefulWidget {
   _ADHomeContentState createState() => _ADHomeContentState();
 }
 
-class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProviderStateMixin {
+class _ADHomeContentState extends State<ADHomeContent>
+    with SingleTickerProviderStateMixin {
   // 1. 创建动画控制器
   AnimationController _controller;
   // 2. 创建曲线动画对象
@@ -34,20 +35,19 @@ class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProvider
     super.initState();
 
     // 设置动画控制器
-    _controller = AnimationController(
-        vsync: this,
-        duration: Duration(seconds: 2)
-    );
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
 
     // 设置曲线动画对象
-//    _curvedAnim = CurvedAnimation(parent: _controller, curve: Curves.linear);
+    _curvedAnim = CurvedAnimation(parent: _controller, curve: Curves.linear);
 
     // 设置值范围的动画对象
     // 3.Tween
     // 3.1.创建size的tween
     _sizeAnim = Tween(begin: 50.0, end: 200.0).animate(_controller);
     // 3.2.创建color的tween
-    _colorAnim = ColorTween(begin: Colors.orange, end: Colors.purple).animate(_controller);
+    _colorAnim = ColorTween(begin: Colors.orange, end: Colors.purple)
+        .animate(_controller);
     // 3.3.创建opacity的tween
     _opacityAnim = Tween(begin: 0.0, end: 1.0).animate(_controller);
     // 3.4.创建radians的tween
@@ -110,5 +110,12 @@ class _ADHomeContentState extends State<ADHomeContent> with SingleTickerProvider
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // 4. 释放控制动画对象
+    _controller.dispose();
+    super.dispose();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_flutter/f13_animation/pages/image_page.dart';
+import 'package:flutter_study/f12-animation/pages/image_page.dart';
 
 main() => runApp(MyApp());
 
@@ -33,7 +33,7 @@ class ADHomePage extends StatelessWidget {
           children: List.generate(20, (index) {
             final imageURL = "https://picsum.photos/500/500?random=$index";
             return GestureDetector(
-              onTap: () => _jumpToImagePage(context, imageURL),
+              onTap: () => _jumpToImageDetailPage(context, imageURL),
               child: Hero(
                 tag: imageURL,
                 child: Image.network(imageURL, fit: BoxFit.cover),
@@ -45,7 +45,7 @@ class ADHomePage extends StatelessWidget {
     );
   }
 
-  void _jumpToImagePage(BuildContext context, String imageURL) {
+  void _jumpToImageDetailPage(BuildContext context, String imageURL) {
     Navigator.of(context).push(
       PageRouteBuilder(pageBuilder: (ctx, anim1, anim2) {
         return FadeTransition(

@@ -68,8 +68,7 @@ class _ADCircleTextState extends State<ADCircleText>
   // 1. 创建动画控制器
   AnimationController _controller;
   // 2. 创建值范围的动画对象
-  // Animation _tweenAnim;
-  Animation _transformAnim;
+  Animation _tweenAnim;
 
   @override
   void initState() {
@@ -82,8 +81,7 @@ class _ADCircleTextState extends State<ADCircleText>
 
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 4));
-    // _tweenAnim = Tween(begin: endRadius, end: beginRadius).animate(_controller);
-    _transformAnim = Tween().animate(_controller);
+    _tweenAnim = Tween(begin: endRadius, end: beginRadius).animate(_controller);
   }
 
   @override
@@ -95,53 +93,61 @@ class _ADCircleTextState extends State<ADCircleText>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _transformAnim,
+      animation: _tweenAnim,
       builder: (ctx, child) {
-        return Positioned(
-          left: left,
-          top: top,
-          child: GestureDetector(
-            child: CircleAvatar(
-              child: Text("$endRadius"),
-              radius: endRadius,
+        RelativeRect beginRect = RelativeRect.fromSize(
+            Rect.fromLTWH(left, top, 2 * beginRadius, 2 * beginRadius),
+            Size(2 * beginRadius, 2 * beginRadius));
+        RelativeRect endRect = RelativeRect.fromSize(
+            Rect.fromLTWH(0, 0, 2 * beginRadius, 2 * beginRadius),
+            Size(2 * beginRadius, 2 * beginRadius));
+        return PositionedTransition(
+          rect: RelativeRectTween(
+            begin: beginRect,
+            end: endRect,
+          ).animate(_tweenAnim),
+          child: Positioned(
+            left: left,
+            top: top,
+            child: GestureDetector(
+              child: CircleAvatar(
+                child: Text("A"),
+                radius: endRadius,
+              ),
+              onPanStart: (details) {
+                startY = details.localPosition.dy;
+              },
+              onPanUpdate: (DragUpdateDetails details) {
+                double deltaY = details.localPosition.dy - startY;
+                if (deltaY > 50) {
+                  isStartDarg = true;
+                  isBackOrigin = false;
+                } else {
+                  isBackOrigin = true;
+                }
+                if (isStartDarg) {
+                  setState(() {
+                    endRadius =
+                        deltaY > 0 ? beginRadius - deltaY / 10 : beginRadius;
+                    print("endRadius: $endRadius");
+                    left += details.delta.dx;
+                    top += details.delta.dy;
+                  });
+                }
+              },
+              onPanEnd: (details) {
+                if (isBackOrigin) {
+                  setState(() {
+                    left = widget.left;
+                    top = widget.top;
+                    _controller.forward();
+                  });
+                } else {
+                  print("返回上一界面");
+                }
+                isStartDarg = false;
+              },
             ),
-            onPanStart: (details) {
-              startY = details.localPosition.dy;
-            },
-            onPanUpdate: (DragUpdateDetails details) {
-              double deltaY = details.localPosition.dy - startY;
-              if (deltaY > 10) {
-                isStartDarg = true;
-                isBackOrigin = false;
-              } else {
-                isBackOrigin = true;
-              }
-              if (isStartDarg) {
-                setState(() {
-                  endRadius =
-                      deltaY > 0 ? beginRadius - deltaY / 10 : beginRadius;
-                  print("endRadius: $endRadius");
-                  left += details.delta.dx;
-                  top += details.delta.dy;
-                });
-              }
-            },
-            onPanEnd: (details) {
-              if (isBackOrigin) {
-                setState(() {
-                  left = widget.left;
-                  top = widget.top;
-                  _transformAnim = Tween<EdgeInsets>(
-                    begin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    end: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  ).animate(_controller);
-                  _controller.forward();
-                });
-              } else {
-                print("返回上一界面");
-              }
-              isStartDarg = false;
-            },
           ),
         );
       },
