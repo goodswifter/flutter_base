@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'f14-screen_fit/extension/double_extension.dart';
-import 'f14-screen_fit/extension/int_extension.dart';
-import 'f14-screen_fit/shared/size_fit.dart';
+import 'extension/double_extension.dart';
+import 'extension/int_extension.dart';
+import 'shared/size_fit.dart';
 
 main() => runApp(MyApp());
 
@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.blue, splashColor: Colors.transparent),
+        primarySwatch: Colors.blue,
+        splashColor: Colors.transparent,
+      ),
       home: ADHomePage(),
     );
   }
@@ -31,23 +33,29 @@ class ADHomePage extends StatelessWidget {
     print("状态栏的高度: $statusHeight");
     print(ADSizeFit.screenWidth);
 
+    // double width = 200.px;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("首页"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
-      body: Center(
-        child: Container(
-          width: 200.px,
-          height: 200.0.px,
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: Text("Hello World", style: TextStyle(fontSize: 20.px,),),
+        appBar: AppBar(
+          title: Text("首页"),
         ),
-      )
-    );
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {},
+        ),
+        body: Center(
+          child: Container(
+            width: 200.px,
+            height: 200.0.px,
+            color: Colors.red,
+            alignment: Alignment.center,
+            child: Text(
+              "Hello World",
+              style: TextStyle(
+                fontSize: 20.px,
+              ),
+            ),
+          ),
+        ));
   }
 }

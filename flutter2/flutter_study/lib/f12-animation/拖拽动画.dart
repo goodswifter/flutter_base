@@ -48,12 +48,12 @@ class _MyAppState extends State<MyApp> {
                     },*/
 
                     // 第二种 水平方向滑动、拖动
-                    onHorizontalDragUpdate: (DragUpdateDetails e) {
-                      // 用户手指滑动时，更新偏移，重新构建
-                      setState(() {
-                        leftDistance += e.delta.dx;
-                      });
-                    },
+                    // onHorizontalDragUpdate: (DragUpdateDetails e) {
+                    //   // 用户手指滑动时，更新偏移，重新构建
+                    //   setState(() {
+                    //     leftDistance += e.delta.dx;
+                    //   });
+                    // },
 
                     // 第三种 全方向滑动、拖动
                     // 第三种 手指滑动时会触发此回调

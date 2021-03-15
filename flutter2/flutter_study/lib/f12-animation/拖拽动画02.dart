@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+AnimationController controller;
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text("手势检测"),
+      home: Scaffold(
+        appBar: AppBar(title: Text("Flutter 测试")),
+        body: ADHomePage(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => controller.forward(),
+        ),
       ),
-      body: ADHomePage(),
-    ));
+    );
   }
 }
 
@@ -22,10 +27,11 @@ class ADHomePage extends StatefulWidget {
   _ADHomePageState createState() => _ADHomePageState();
 }
 
-class _ADHomePageState extends State<ADHomePage>
-    with SingleTickerProviderStateMixin {
+class _ADHomePageState extends State<ADHomePage> {
   double topDistance = 0.0;
+
   double leftDistance = 0.0;
+
   double radius = 100;
 
   @override
@@ -38,119 +44,141 @@ class _ADHomePageState extends State<ADHomePage>
         (size.height - statusHeight - kMinInteractiveDimension) * 0.5 - radius;
     print(
         "$leftDistance, $topDistance, $statusHeight, $kMinInteractiveDimension, $size");
-    return Stack(
-      children: [ADCircleText(leftDistance, topDistance, radius)],
-    );
+    return ADHomeContent(leftDistance, topDistance, radius);
   }
 }
 
-class ADCircleText extends StatefulWidget {
+class ADHomeContent extends StatefulWidget {
   final double left;
   final double top;
   final double radius;
 
-  ADCircleText(this.left, this.top, this.radius);
-
+  ADHomeContent(this.left, this.top, this.radius);
   @override
-  _ADCircleTextState createState() => _ADCircleTextState();
+  _ADHomeContentState createState() => _ADHomeContentState();
 }
 
-class _ADCircleTextState extends State<ADCircleText>
-    with SingleTickerProviderStateMixin {
+class _ADHomeContentState extends State<ADHomeContent>
+    with TickerProviderStateMixin {
   double left;
   double top;
   double startY;
   double beginRadius;
   double endRadius;
-  bool isStartDarg = false;
+  bool isStartDrag = false;
   bool isBackOrigin = false;
-  // double deltaRadiusValue; // deltaRadiusValue
-  // 1. 创建动画控制器
-  AnimationController _controller;
-  // 2. 创建值范围的动画对象
-  Animation _tweenAnim;
+  Animation<Offset> animation;
+
+  Offset lastLocation = Offset.zero;
+  Offset originLocation = Offset.zero;
+  double lastDx = 0;
+  double lastDy = 0;
+  double deltaDx = 0;
+  double deltaDy = 0;
+  double originDx = 0;
+  double originDy = 0;
 
   @override
   void initState() {
     super.initState();
-
     left = widget.left;
     top = widget.top;
     beginRadius = widget.radius;
     endRadius = widget.radius;
+    originDx = left + beginRadius;
+    originDy = top + beginRadius;
+    originLocation = Offset(originDx, originDy);
 
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 4));
-    _tweenAnim = Tween(begin: endRadius, end: beginRadius).animate(_controller);
+    print("原点位置: ($originDx, $originDy)");
+
+    controller =
+        AnimationController(duration: Duration(seconds: 2), vsync: this);
+    animation = Tween(begin: Offset.zero, end: Offset(lastDx, lastDy))
+        .animate(controller);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    print("dispose");
+    controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _tweenAnim,
-      builder: (ctx, child) {
-        RelativeRect beginRect = RelativeRect.fromSize(
-            Rect.fromLTWH(left, top, 2 * beginRadius, 2 * beginRadius),
-            Size(2 * beginRadius, 2 * beginRadius));
-        RelativeRect endRect = RelativeRect.fromSize(
-            Rect.fromLTWH(0, 0, 2 * beginRadius, 2 * beginRadius),
-            Size(2 * beginRadius, 2 * beginRadius));
-        return PositionedTransition(
-          rect: RelativeRectTween(
-            begin: beginRect,
-            end: endRect,
-          ).animate(_tweenAnim),
-          child: Positioned(
-            left: left,
-            top: top,
+    return Stack(
+      children: [
+        Positioned(
+          left: left,
+          top: top,
+          child: SlideTransition(
+            position: animation,
             child: GestureDetector(
               child: CircleAvatar(
-                child: Text("A"),
-                radius: endRadius,
+                child: Text("$endRadius"),
+                radius: 100,
               ),
               onPanStart: (details) {
+                print("O2: ${details.globalPosition}");
                 startY = details.localPosition.dy;
+                deltaDx = details.globalPosition.dx - originDx;
+                deltaDy = details.globalPosition.dy - originDy;
+                // left = widget.left;
+                // top = widget.top;
+                print("====$left $top");
               },
               onPanUpdate: (DragUpdateDetails details) {
                 double deltaY = details.localPosition.dy - startY;
-                if (deltaY > 50) {
-                  isStartDarg = true;
+                if (deltaY > 10) {
+                  isStartDrag = true;
                   isBackOrigin = false;
                 } else {
                   isBackOrigin = true;
                 }
-                if (isStartDarg) {
+                if (isStartDrag) {
                   setState(() {
                     endRadius =
                         deltaY > 0 ? beginRadius - deltaY / 10 : beginRadius;
-                    print("endRadius: $endRadius");
                     left += details.delta.dx;
                     top += details.delta.dy;
+                    lastLocation = details.globalPosition;
+                    print("333-" + "$lastLocation");
                   });
                 }
               },
               onPanEnd: (details) {
-                if (isBackOrigin) {
+                if (lastLocation != originLocation && isStartDrag) {
+                  print("l2: $lastLocation");
+                  double eDx = lastLocation.dx - deltaDx;
+                  double eDy = lastLocation.dy - deltaDy;
+                  double oDx = originLocation.dx;
+                  double oDy = originLocation.dy;
                   setState(() {
+                    lastDx = (oDx - eDx) / 200;
+                    lastDy = (oDy - eDy) / 200;
+                    print(
+                        "-----o1:($oDx, $oDy) l1:($eDx, $eDy), offset($lastDx, $lastDy)");
+                    controller = AnimationController(
+                        duration: Duration(seconds: 2), vsync: this);
+                    animation = Tween(
+                      begin: Offset(0.0, 0.0),
+                      end: Offset(lastDx, lastDy),
+                    ).animate(controller);
+                    controller.forward();
+                  });
+                }
+                controller.addListener(() {
+                  if (controller.status == AnimationStatus.completed) {
                     left = widget.left;
                     top = widget.top;
-                    _controller.forward();
-                  });
-                } else {
-                  print("返回上一界面");
-                }
-                isStartDarg = false;
+                  }
+                });
+                isStartDrag = false;
               },
             ),
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 }
