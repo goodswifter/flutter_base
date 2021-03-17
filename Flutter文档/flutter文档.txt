@@ -1,7 +1,7 @@
 
 flutter clean: 清除
 
-mac永久配置变量
+1. mac永久配置变量
 
 # 1. 在`$HOME/.bash_profile`添加执行代码
 # 使用国内镜像
@@ -13,20 +13,20 @@ export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"
 # 2.  在"$HOME/.zshrc"添加执行代码
 source $HOME/.bash_profile
 
-VSCode配置
+2. VSCode配置
 // 必备插件
 1. Dart和Flutter是为Flutter开发必备的
 2. Atom One Dart Theme 主题
 3. Code Runner 可以直接运行
 
-定义字符串可以用单引号或者双引号
+3. 定义字符串可以用单引号或者双引号
 
-定义变量
+4. 定义变量
 类型推导(Type Inference)
 var age = 18; // age 是个int类型的变量
 age = 'zad'; // ❌
 
-dynamic和Object都可以代表任意类型
+5. dynamic和Object都可以代表任意类型
 dynamic: 可以代表任意类型
 Object: 所有类都继承Object类
 区别:
@@ -34,11 +34,7 @@ dynamic: 调用子类方法时, 编译时不会报错, 存在安全隐患
 Object: 调用子类方法时, 编译时就会报错
 
 
-常量构造函数和非常量构造函数有什么区别?
-
-
-闭包: 
-即一个函数对象，即使函数对象的调用在它原始作用域之外， 依然能够访问在它词法作用域内的变量。
+6. 常量构造函数和非常量构造函数有什么区别?
 
 常量构造方法: 
 如果将构造方法前加const进行修饰，那么可以保证同一个参数，创建出来的对象是相同的
@@ -48,19 +44,28 @@ Object: 调用子类方法时, 编译时就会报错
 
 如果是将结果赋值给const修饰的标识符时，const可以省略.
 
+
+7. 闭包: 
+即一个函数对象，即使函数对象的调用在它原始作用域之外， 依然能够访问在它词法作用域内的变量。
+
+8. @immutable 和 @mustCallSuper
 @immutable: 不可变的
 @mustCallSuper: 如果父类有这个关键字@mustCallSuper, 子类重写父类方法时, 必须调用父类的这个方法
 
 
-编程范式:
+9. 编程范式:
 命令式编程
 声明式编程
 
 
-普通Widget
+10. 普通Widget
 文本Text
 富文本: Text.rich
 TextSpan(文本相关), WidgetSpan(其他..)
+
+11. Map<String, dynamic> 转 Map<String, String>
+	Map<String, dynamic> oldMap;
+    newMap = oldMap.map((key, value) => MapEntry(key, value.cast<String, String>()));
 
 
 

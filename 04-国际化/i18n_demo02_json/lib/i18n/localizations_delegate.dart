@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:i18n_demo02/i18n/localizations_init.dart';
 
 class ADLocalizationsDelegate extends LocalizationsDelegate<ADLocalizations> {

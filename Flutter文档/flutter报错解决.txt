@@ -16,7 +16,7 @@ ios
 		</dict>
 
 android
-	1. Go to yourapp\android\app\src\debug\AndroidManifest.xml.
+	1. Go to yourapp\android\app\src\main\AndroidManifest.xml.
 	2. Add this line.
 	```
 	<application android:usesCleartextTraffic="true"></application>
