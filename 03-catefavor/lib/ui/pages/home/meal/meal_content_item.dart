@@ -1,10 +1,10 @@
+import 'package:catefavor/core/extension/int_extension.dart';
 import 'package:catefavor/core/model/meal_model.dart';
 import 'package:catefavor/core/viewmodel/favor_view_model.dart';
-import 'package:catefavor/core/viewmodel/meal_view_model.dart';
 import 'package:catefavor/ui/pages/home/detail/detail.dart';
 import 'package:flutter/material.dart';
-import 'package:catefavor/core/extension/int_extension.dart';
 import 'package:provider/provider.dart';
+
 import 'meal_content_operation_item.dart';
 
 final cardRadius = 12.px;

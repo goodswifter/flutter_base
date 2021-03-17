@@ -4,3 +4,20 @@ flutter报错解决:
 - Run flutter create bug.
 - Update the files as follows: ...
 - ...
+
+
+2. Bad state: Insecure HTTP is not allowed by platform: [closed]
+ios 
+	1. info.plist
+	2. 	<key>NSAppTransportSecurity</key>
+		<dict>
+		        <key>NSAllowsArbitraryLoads</key>
+		        <true/>
+		</dict>
+
+android
+	1. Go to yourapp\android\app\src\debug\AndroidManifest.xml.
+	2. Add this line.
+	```
+	<application android:usesCleartextTraffic="true"></application>
+	```
