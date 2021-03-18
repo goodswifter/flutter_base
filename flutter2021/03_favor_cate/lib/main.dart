@@ -1,14 +1,16 @@
 import 'package:favor_cate/core/router/router.dart';
+import 'package:favor_cate/core/viewmodel/initialize_providers.dart';
 import 'package:favor_cate/ui/shared/app_theme.dart';
 import 'package:favor_cate/ui/shared/size_fit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MultiProvider(
-      providers: [
-        // ChangeNotifierProvider(create: (context) => ,)
-      ],
-    ));
+void main() => runApp(
+      MultiProvider(
+        providers: providers,
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   @override

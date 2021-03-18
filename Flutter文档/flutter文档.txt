@@ -68,7 +68,9 @@ TextSpan(文本相关), WidgetSpan(其他..)
     newMap = oldMap.map((key, value) => MapEntry(key, value.cast<String, String>()));
 
 
-
+12. 判断两个list是否相等
+import 'package:collection/collection.dart';
+ListEquality().equals(prev, next);
 
 
 

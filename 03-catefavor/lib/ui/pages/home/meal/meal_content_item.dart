@@ -74,7 +74,7 @@ class ADMealContentItem extends StatelessWidget {
   Widget buildFavorItem() {
     return Consumer<ADFavorViewModel>(
       builder: (ctx, favorVM, child) {
-        // 1.判断是否收藏状态
+        // 1. 判断是否收藏状态
         final iconData = favorVM.isFavor(_meal) ? Icons.favorite : Icons.favorite_border;
         final favorColor = favorVM.isFavor(_meal) ? Colors.red : Colors.black;
         final title = favorVM.isFavor(_meal)? "收藏" : "未收藏";
@@ -84,10 +84,7 @@ class ADMealContentItem extends StatelessWidget {
             title,
             textColor: favorColor,
           ),
-//          onTap: () => favorVM.handleMeals(_meal),
-          onTap: () {
-            favorVM.handleMeals(_meal);
-          },
+         onTap: () => favorVM.handleMeals(_meal),
         );
       },
     );

@@ -44,6 +44,7 @@ class ADAppTheme {
     height: 25,
     minWidth: 10,
     buttonColor: Colors.yellow,
+    splashColor: Colors.black,
   );
 
   static final CardTheme cardTheme = CardTheme(

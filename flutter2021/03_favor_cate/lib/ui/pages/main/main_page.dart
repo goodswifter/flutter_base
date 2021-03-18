@@ -1,3 +1,4 @@
+import 'package:favor_cate/ui/pages/home/drawer/drawer_page.dart';
 import 'package:favor_cate/ui/pages/main/initialize_item.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,7 @@ class _ADMainPageState extends State<ADMainPage> {
         // 超过4个要设置此属性, 不然, 文字就会显示不出来
         type: BottomNavigationBarType.fixed,
       ),
+      drawer: ADHomeDrawerPage(),
     );
   }
 }
