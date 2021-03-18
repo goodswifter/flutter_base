@@ -16,8 +16,18 @@ ios
 		</dict>
 
 android
-	1. Go to yourapp\android\app\src\main\AndroidManifest.xml.
+	debug:
+	1. Go to yourapp\android\app\src\debug\AndroidManifest.xml.
 	2. Add this line.
 	```
 	<application android:usesCleartextTraffic="true"></application>
 	```
+
+	release:
+	1. android/app/src/main/AndroidManifest.xml
+	2. android:usesCleartextTraffic="true" to <application />
+	<application
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="receipt"
+        android:usesCleartextTraffic="true" <!-- This Line -->
+        android:icon="@mipmap/ic_launcher">
