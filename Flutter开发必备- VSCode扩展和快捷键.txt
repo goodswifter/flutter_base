@@ -26,6 +26,8 @@ Toggle Comment: Cmd + /
 重构: alt + Enter
 查看实现: cmd + alt + B
 删除整一行: cmd + shift + k
+调试控制台: cmd + shift + y
+终端: ctrl + `
 
 
 
