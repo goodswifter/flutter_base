@@ -27,7 +27,7 @@ class ADMealContentSelector extends StatelessWidget {
         return ListView.builder(
           itemCount: meals.length,
           itemBuilder: (ctx, index) {
-            return ADMealContentItem();
+            return ADMealContentItem(meals[index]);
           },
         );
       },

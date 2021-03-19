@@ -12,6 +12,7 @@ Flutter常用网站:
 - https://javiercbk.github.io/json_to_dart
 - quicktype(推荐): https://app.quicktype.io/
 4. 测试网站: httpbin.org
+5. 图标工厂(一键生成所有尺寸的应用图标/启动图): https://icon.wuruihong.com/
 
 
 学习网站:

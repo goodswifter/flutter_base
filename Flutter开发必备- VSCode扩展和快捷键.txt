@@ -1,5 +1,9 @@
 flutter开发必备: VSCode扩展和快捷键
 
+VSCode字体: 
+1. FiraCode: https://github.com/tonsky/FiraCode
+设置: "editor.fontFamily": "Fira Code, 'Courier New', monospace"
+
 扩展:
 Flutter 
 Dart
@@ -12,6 +16,7 @@ Dart Data Class Generator: 自动生成构造, setter, getter方法, 在设置�
 flutter code select: 按 alt+a 可在方括号之间快速选择代码
 
 
+
 快捷键:
 Format: Alt+ Shift + F
 Quick Fix: Cmd + .
@@ -20,7 +25,6 @@ Quick Open: cmd + P
 Move line(s): alt + Up/Down
 add Selection(添加选择): cmd + D
 Rename: F2
-Go to Definition: Cmd + click
 Remove Imports: Alt+ Shift + O
 Toggle Comment: Cmd + /
 重构: alt + Enter
@@ -28,8 +32,14 @@ Toggle Comment: Cmd + /
 删除整一行: cmd + shift + k
 调试控制台: cmd + shift + y
 终端: ctrl + `
+提示: Ctrl + space
+打开文件: cmd + .
+错误提示: alt + enter
+关闭左边窗口: cmd + b
 
 
+Android Studio插件: 
+添加图片: flutter_add_image
 
 
 
