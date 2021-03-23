@@ -17,3 +17,6 @@ Flutter常用网站:
 
 学习网站:
 1. Sky24n: https://www.jianshu.com/u/cbf2ad25d33a
+2. Flutter全网最全常用工具类: https://www.jianshu.com/p/02907d4ae438
+3. 插件汇总: https://www.jianshu.com/p/406672d4a0cd
+4. 插件汇总: https://www.daimajiaoliu.com/daima/47a4d30ec100407
