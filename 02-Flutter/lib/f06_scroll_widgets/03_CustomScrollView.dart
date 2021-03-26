@@ -48,10 +48,11 @@ class CustomScrollView02 extends StatelessWidget {
       ),
       SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            childAspectRatio: 2,),
+          crossAxisCount: 2,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+          childAspectRatio: 2,
+        ),
         delegate: SliverChildBuilderDelegate(
           (BuildContext ctx, int int) {
             return Container(
@@ -91,13 +92,19 @@ class CustomScrollView01 extends StatelessWidget {
             sliver: SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext ctx, int index) {
-                return Container(
-                  color: Color.fromARGB(255, Random().nextInt(256),
-                      Random().nextInt(256), Random().nextInt(256),),
-                );
-              }, childCount: 50,),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext ctx, int index) {
+                  return Container(
+                    color: Color.fromARGB(
+                      255,
+                      Random().nextInt(256),
+                      Random().nextInt(256),
+                      Random().nextInt(256),
+                    ),
+                  );
+                },
+                childCount: 50,
+              ),
             ),
           ),
         )
