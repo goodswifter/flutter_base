@@ -11,13 +11,15 @@ class ADDetailContent extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
+        children: [
           buildBannerImage(),
           buildTitleHandle(context, "制作材料"),
           buildMakeMaterial(context),
           buildTitleHandle(context, "制作步骤"),
           buildMakeSteps(context),
-          SizedBox(height: 100,)
+          SizedBox(
+            height: 100,
+          )
         ],
       ),
     );
@@ -28,9 +30,7 @@ class ADDetailContent extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: FadeInImage.assetNetwork(
-        placeholder: "assets/images/default_food.jpg",
-        image: _meal.imageUrl
-      ),
+          placeholder: "assets/images/default_food.jpg", image: _meal.imageUrl),
     );
   }
 
@@ -49,8 +49,7 @@ class ADDetailContent extends StatelessWidget {
               child: Text(_meal.ingredients[index]),
             ),
           );
-        }
-    );
+        });
     return buildContentHandle(context: context, child: child);
   }
 
@@ -77,7 +76,13 @@ class ADDetailContent extends StatelessWidget {
   Widget buildTitleHandle(BuildContext context, String title) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12.px),
-      child: Text(title, style: Theme.of(context).textTheme.headline2.copyWith(fontWeight: FontWeight.bold),),
+      child: Text(
+        title,
+        style: Theme.of(context)
+            .textTheme
+            .headline2
+            .copyWith(fontWeight: FontWeight.bold),
+      ),
     );
   }
 
