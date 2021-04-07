@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/f05-scroll-widgets/03-CustomScrollView.dart';
 import 'f14-screen_fit/extension/double_extension.dart';
 import 'f14-screen_fit/extension/int_extension.dart';
 import 'f14-screen_fit/shared/size_fit.dart';
@@ -32,22 +33,26 @@ class ADHomePage extends StatelessWidget {
     print(ADSizeFit.screenWidth);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("首页"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
-      body: Center(
-        child: Container(
-          width: 200.px,
-          height: 200.0.px,
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: Text("Hello World", style: TextStyle(fontSize: 20.px,),),
-        ),
-      )
-    );
+      body: CustomScrollView02()
+      );
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text("首页"),
+    //   ),
+    //   floatingActionButton: FloatingActionButton(
+    //     child: Icon(Icons.add),
+    //     onPressed: () {},
+    //   ),
+    //   body: Center(
+    //     child: Container(
+    //       width: 200.px,
+    //       height: 200.0.px,
+    //       color: Colors.red,
+    //       alignment: Alignment.center,
+    //       child: Text("Hello World", style: TextStyle(fontSize: 20.px,),),
+    //     ),
+    //   )
+    // );
   }
 }

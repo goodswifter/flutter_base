@@ -31,15 +31,21 @@ class CustomScrollView02 extends StatelessWidget {
       slivers: [
         SliverAppBar(
           expandedHeight: 300,
+          floating: true,
+          // title: Text("可折叠组件"),
           // 用针别住
-          pinned: true,
+          // pinned: true,
+          brightness: Brightness.dark,
+          backgroundColor: Colors.transparent,
+          // title: Text("哈哈哈哈"),
           flexibleSpace: FlexibleSpaceBar(
-            title: Text("Hello World"),
-            background: Image.asset(
-              "assets/images/haha.jpg",
-              fit: BoxFit.cover,
+            // title: Text("Hello World"),
+            background: Container(
+              child: Text("哈哈哈"),
+              color: Colors.red,
             ),
           ),
+          // flexibleSpace: Text("哈哈哈"),
         ),
         SliverPadding(
           padding: EdgeInsets.all(8),
@@ -65,15 +71,17 @@ class CustomScrollView02 extends StatelessWidget {
             ),
           ),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext ctx, int index) {
-              return ListTile(
-                leading: Icon(Icons.people),
-                title: Text("联系人$index"),
-              );
-            },
-            childCount: 20,
+        SliverSafeArea(
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext ctx, int index) {
+                return ListTile(
+                  leading: Icon(Icons.people),
+                  title: Text("联系人$index"),
+                );
+              },
+              childCount: 20,
+            ),
           ),
         )
       ],
