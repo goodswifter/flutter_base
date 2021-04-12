@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter/f15_screen_fit/shared/size_fit.dart';
 
+import 'f05_multiwidgets/03_多子布局Stack.dart';
+
 main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -37,18 +39,19 @@ class ADHomePage extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: () {},
       ),
-      body: Center(
-        child: Container(
-          width: ADSizeFit.setRpx(400),
-          height: ADSizeFit.setPx(200),
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: Text(
-            "Hello World",
-            style: TextStyle(fontSize: 40 * ADSizeFit.rpx),
-          ),
-        ),
-      ),
+      body: StackDemo01(),
+      // body: Center(
+      //   child: Container(
+      //     width: ADSizeFit.setRpx(400),
+      //     height: ADSizeFit.setPx(200),
+      //     color: Colors.red,
+      //     alignment: Alignment.center,
+      //     child: Text(
+      //       "Hello World",
+      //       style: TextStyle(fontSize: 40 * ADSizeFit.rpx),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
