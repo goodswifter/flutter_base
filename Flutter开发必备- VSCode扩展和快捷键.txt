@@ -14,6 +14,7 @@ Pubspec Assist: 自动添加依赖
 bloc: 
 Dart Data Class Generator: 自动生成构造, setter, getter方法, 在设置配置属性
 flutter code select: 按 alt+a 可在方括号之间快速选择代码
+Image preview: 在左侧可以预览图片和悬停中显示图片
 
 
 
