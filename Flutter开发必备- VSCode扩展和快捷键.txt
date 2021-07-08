@@ -26,7 +26,7 @@ Quick Open: cmd + P
 Move line(s): alt + Up/Down
 add Selection(添加选择): cmd + D
 Rename: F2
-Remove Imports: Alt+ Shift + O
+Remove Imports: Alt+ Shift + O 
 Toggle Comment: Cmd + /
 重构: alt + Enter
 查看实现: cmd + alt + B
