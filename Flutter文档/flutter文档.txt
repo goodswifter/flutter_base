@@ -13,13 +13,6 @@ export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"
 # 2.  在"$HOME/.zshrc"添加执行代码
 source $HOME/.bash_profile
 
-2. VSCode配置
-// 必备插件
-1. Dart和Flutter是为Flutter开发必备的
-2. Atom One Dart Theme 主题
-3. Code Runner 可以直接运行
-
-3. 定义字符串可以用单引号或者双引号
 
 4. 定义变量
 类型推导(Type Inference)

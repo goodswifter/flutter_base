@@ -15,11 +15,11 @@ bloc:
 Dart Data Class Generator: 自动生成构造, setter, getter方法, 在设置配置属性
 flutter code select: 按 alt+a 可在方括号之间快速选择代码
 Image preview: 在左侧可以预览图片和悬停中显示图片
+Code Runner: 可以直接运行
 
 
 
 快捷键:
-Format: Alt+ Shift + F
 Quick Fix: Cmd + .
 Command Palette(命令面板): cmd + shift + P
 Quick Open: cmd + P
