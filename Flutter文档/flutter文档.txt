@@ -2,14 +2,12 @@
 flutter clean: 清除
 
 1. mac永久配置变量
-
 # 1. 在`$HOME/.bash_profile`添加执行代码
 # 使用国内镜像
 export PUB_HOSTED_URL="https://pub.flutter-io.cn"
 export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
 # 添加flutter, dart命令
 export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"
-
 # 2.  在"$HOME/.zshrc"添加执行代码
 source $HOME/.bash_profile
 
@@ -18,6 +16,7 @@ source $HOME/.bash_profile
 类型推导(Type Inference)
 var age = 18; // age 是个int类型的变量
 age = 'zad'; // ❌
+
 
 5. dynamic和Object都可以代表任意类型
 dynamic: 可以代表任意类型
@@ -28,7 +27,6 @@ Object: 调用子类方法时, 编译时就会报错
 
 
 6. 常量构造函数和非常量构造函数有什么区别?
-
 常量构造方法: 
 如果将构造方法前加const进行修饰，那么可以保证同一个参数，创建出来的对象是相同的
 常量构造方法的所有属性, 必须是final常量
@@ -40,6 +38,7 @@ Object: 调用子类方法时, 编译时就会报错
 
 7. 闭包: 
 即一个函数对象，即使函数对象的调用在它原始作用域之外， 依然能够访问在它词法作用域内的变量。
+
 
 8. @immutable 和 @mustCallSuper
 @immutable: 不可变的
