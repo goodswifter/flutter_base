@@ -8,8 +8,14 @@ import 'intl/messages_all.dart';
 // Made by Localizely
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+// ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
+// ignore_for_file: avoid_redundant_argument_values
+
 class S {
   S();
+  
+  static S current;
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
@@ -19,7 +25,9 @@ class S {
     final localeName = Intl.canonicalizedLocale(name); 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S();
+      S.current = S();
+      
+      return S.current;
     });
   } 
 
@@ -27,6 +35,7 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Home`
   String get title {
     return Intl.message(
       'Home',
@@ -36,6 +45,7 @@ class S {
     );
   }
 
+  /// `Hello~`
   String get hello {
     return Intl.message(
       'Hello~',
@@ -45,6 +55,7 @@ class S {
     );
   }
 
+  /// `Pick a Time~`
   String get pickTime {
     return Intl.message(
       'Pick a Time~',
