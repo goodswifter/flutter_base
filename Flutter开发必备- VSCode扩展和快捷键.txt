@@ -121,23 +121,23 @@ koroFileHeader: 自动添加注释
 
 
 快捷键:
-Quick Fix: Cmd + .
-Command Palette(命令面板): cmd + shift + P
-Quick Open: cmd + P
-Move line(s): alt + Up/Down
-add Selection(添加选择): cmd + D
-Rename: F2
-Remove Imports: Alt+ Shift + O 
-Toggle Comment: Cmd + /
-重构: alt + Enter
-查看实现: cmd + alt + B
-删除整一行: cmd + shift + k
-调试控制台: cmd + shift + y
-终端: ctrl + `
-提示: Ctrl + space
-打开文件: cmd + .
-错误提示: alt + enter
-关闭左边窗口: cmd + b
+- Quick Fix: Cmd + .
+- Command Palette(命令面板): cmd + shift + P
+- Quick Open: cmd + P
+- Move line(s): alt + Up/Down
+- add Selection(添加选择): cmd + D
+- Rename: F2
+- Remove Imports: Alt+ Shift + O 
+- 查看实现: cmd + alt + B
+- 删除整一行: cmd + shift + k
+- 调试控制台: cmd + shift + y
+- 终端: ctrl + `
+- 提示: Ctrl + space
+- 错误提示: alt + enter
+- 关闭左边窗口: cmd + b
+- 折叠所有区域代码的快捷键：cmd + k, cmd + 0
+- 展开所有折叠区域代码的快捷键: cmd + k, cmd + j
+- 切换折叠: cmd + k, cmd + l
 
 
 Android Studio插件: 
